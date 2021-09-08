@@ -95,7 +95,7 @@ class DeleteVCC:
         asyncio.run(self.initBrowser())
     
     async def initBrowser(self):
-        self.browser = await launch({'args': ['--window-size=1600,1000'], 'headless': False , 'defaultViewport': None}, handleSIGINT=False, handleSIGTERM=False, handleSIGHUP=False, logLevel=0, autoClose=False, executablePath=chromePath)
+        self.browser = await launch({'args': ['--window-size=1500,1000'], 'headless': False , 'defaultViewport': None}, handleSIGINT=False, handleSIGTERM=False, handleSIGHUP=False, logLevel=0, autoClose=False, executablePath=chromePath)
 
         page = await self.browser.pages()
         page = page[0]
@@ -117,7 +117,7 @@ class DeleteVCC:
         if "dashboard" in await page.evaluate("window.location.href"):
             while True:
                 try:
-                    await page.waitForXPath('//*[@datatarget="#deactivateModal"]', {"timeout": 5000}):
+                    await page.waitForXPath('//*[@datatarget="#deactivateModal"]', {"timeout": 5000})
                     await click(page, '//*[@datatarget="#deactivateModal"]', 2222)
                     await click(page, '//*[@class="btn btn-primary"]', 2222)
                     self.deleted += 1
