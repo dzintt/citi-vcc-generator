@@ -58,7 +58,7 @@ class CreateVCC:
                 print(f"Creating Card... ({self.created+1})")
 
                 await click(taskPage, '//*[@id="radio2-1-input"]', 10000)
-                await click(taskPage, '//*[@class="btn btn-primary default"]', 10000)
+                await click(taskPage, '//*[@class="ng-star-inserted btn btn-primary default"]', 10000)
                 await asyncio.sleep(1)
                 await taskPage.evaluate('document.getElementById("setTimeTo2").click()')
                 await click(taskPage, '//*[@id="van-get-started"]', 10000)
@@ -171,3 +171,5 @@ def main():
         
 if __name__ == '__main__':
     main()
+
+# datatarget=#deactivateModal
