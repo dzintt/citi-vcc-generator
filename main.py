@@ -1,4 +1,4 @@
-import json, ctypes, asyncio, logging, sys
+import json, ctypes, asyncio, logging, sys, os
 from pyppeteer import launch
 
 logging.disable(logging.CRITICAL)
@@ -119,7 +119,7 @@ class DeleteVCC:
                 try:
                     await page.waitForXPath('//*[@datatarget="#deactivateModal"]', {"timeout": 5000})
                     await click(page, '//*[@datatarget="#deactivateModal"]', 2222)
-                    await click(page, '//*[@class="btn btn-primary"]', 2222)
+                    await click(page, '//*[@class="btn btn-primary ng-star-inserted"]', 2222)
                     self.deleted += 1
                     print(f"Deleted VCC ({self.deleted})")
                     ctypes.windll.kernel32.SetConsoleTitleW(f"Citi VCC Generator ~ By @dzintt | Deleting VCC's ({self.deleted})")
@@ -148,7 +148,7 @@ def save(text):
 
 def getSettings():
     global username, password, chromePath
-    settings = json.load(open("./settings.json"))
+    settings = json.load(open(os.path.join(sys.path[0], "settings.json")))
     username = settings["username"]
     password = settings["password"]
     chromePath = settings["chrome_path"]
